@@ -1,0 +1,12 @@
+{
+  "name": {
+    "text": "NUnit 3 Test Fixture"
+  },
+  "description": {
+    "text": "An item that contains NUnit test fixture class"
+  },
+  "order": 1000,
+  "icon": "icon.png",
+  "learnMoreLink": "https://github.com/nunit/dotnet-new-nunit/blob/master/readme.md",
+  "uiFilters": []
+}

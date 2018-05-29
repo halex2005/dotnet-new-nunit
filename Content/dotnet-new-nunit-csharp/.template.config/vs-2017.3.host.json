@@ -1,0 +1,13 @@
+{
+  "name": {
+    "text": "NUnit 3 Test Project"
+  },
+  "description": {
+    "text": "A project that contains NUnit tests that can run on .NET Core on Windows, Linux and macOS"
+  },
+  "order": 1000,
+  "icon": "icon.png",
+  "learnMoreLink": "https://github.com/nunit/dotnet-new-nunit/blob/master/readme.md",
+  "uiFilters": [ "CSharp/Test" ],
+  "supportsDocker": false
+}

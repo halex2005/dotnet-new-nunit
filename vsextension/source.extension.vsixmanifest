@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="1444F266-1E98-4A43-87BF-F9B59025FE6B" Version="1.5" Language="en-US" Publisher="nunit" />
+    <DisplayName>NUnit 3 Test Project</DisplayName>
+    <Description xml:space="preserve">Contains various projects and items templates for NUnit tests development. Requires Visual Studio 2017.3</Description>
+    <MoreInfo>https://github.com/nunit/dotnet-new-nunit/</MoreInfo>
+    <License>Resources\LICENSE</License>
+    <Icon>Resources\nunit-icon.png</Icon>
+    <PreviewImage>Resources\nunit-icon.png</PreviewImage>
+    <Tags>.net core, template, nunit, test</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0]" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="template.pkgdef" />
+  </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
+</PackageManifest>
