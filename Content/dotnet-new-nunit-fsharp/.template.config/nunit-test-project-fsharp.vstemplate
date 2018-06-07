@@ -1,0 +1,32 @@
+
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
+  <TemplateData>
+    <Name>NUnit 3 Test Project (F#)</Name>
+    <Description>A project that contains NUnit tests that can run on .NET Core on Windows, Linux and macOS</Description>
+    <TemplateID>NUnit3.DotNetNew.Template.FSharp</TemplateID>
+    <DefaultName>NUnitTestProject</DefaultName>
+
+    <Icon>nunit-icon.png</Icon>
+
+    <ProjectType>FSharp</ProjectType>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <SortOrder>5000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection/>
+    <CustomParameters>
+      <CustomParameter Name = "$language$" Value="FSharp" />
+      <CustomParameter Name = "$uistyle$" Value="none"/>
+      <CustomParameter Name = "$groupid$" Value="NUnit3.DotNetNew.Template" />
+      <CustomParameter Name = "SideWaffleNewProjNode" Value="FSharp\Test"/>
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Microsoft.VisualStudio.TemplateEngine.Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>Microsoft.VisualStudio.TemplateEngine.Wizard.TemplateEngineWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

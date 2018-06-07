@@ -1,0 +1,46 @@
+﻿<local:DialogWindowBase x:Class="NUnitTemplatesVsix.TemplateOptionsDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NUnitTemplatesVsix"
+             mc:Ignorable="d" 
+             Width="400" Height="250"
+             d:DesignHeight="250" d:DesignWidth="400">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Margin="0,5">Project Name:</Label>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="0,5" Text="{Binding ProjectName}"></TextBox>
+
+        <Label Grid.Row="1" Grid.Column="0" Margin="0,5">Framework:</Label>
+        <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,5"
+                  HorizontalAlignment="Stretch"
+                  SelectedValue="{Binding Framework, Mode=TwoWay}"
+                  ItemsSource="{Binding AvailableFrameworks, Mode=OneTime}"
+                  SelectedValuePath="Key"
+                  DisplayMemberPath="Value"/>
+        
+        <Label Grid.Row="2" Grid.Column="0" Margin="0,5">Destination directory:</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5" Text="{Binding DestinationDirectory}"></TextBox>
+
+        <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5" IsChecked="{Binding EnablePack}">Enable pack with `nuget pack` command</CheckBox>
+        <CheckBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5" IsChecked="{Binding SkipRestore}">Skip packages restore</CheckBox>
+        
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Padding="15,0" Margin="0,5,5,5" IsDefault="True">Create NUnit project</Button>
+            <Button Padding="15,0" Margin="5,5,0,5" MinWidth="100" IsCancel="True">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</local:DialogWindowBase>

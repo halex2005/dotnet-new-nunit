@@ -1,0 +1,39 @@
+
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
+  <TemplateData>
+    <Name>NUnit 3 Test Project (.NET Framework)</Name>
+    <Description>A project that contains NUnit tests that can run on .NET Core on Windows, Linux and macOS</Description>
+    <TemplateGroupID>NUnit3.DotNetNew.Template</TemplateGroupID>
+    <TemplateID>NUnit3.DotNetNew.Template.CSharp</TemplateID>
+    <DefaultName>NUnitTestProject</DefaultName>
+
+    <Icon>nunit-icon.png</Icon>
+
+    <ProjectType>CSharp</ProjectType>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <SortOrder>5000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection/>
+    <CustomParameters>
+      <CustomParameter Name="$language$" Value="CSharp" />
+      <CustomParameter Name="$templateid$" Value="NUnit3.DotNetNew.Template.CSharp" />
+      <CustomParameter Name="$groupid$" Value="NUnit3.DotNetNew.Template" />
+      <CustomParameter Name="$uistyle$" Value="none" />
+      <CustomParameter Name="$platformversion$" Value="netcoreapp1.0" />
+      <CustomParameter Name="SideWaffleNewProjNode" Value="CSharp\Test"/>
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>NUnitTemplatesVsix, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>NUnitTemplatesVsix.NUnitProjectWizard</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+    <Assembly>Microsoft.VisualStudio.TemplateEngine.Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>Microsoft.VisualStudio.TemplateEngine.Wizard.TemplateEngineWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

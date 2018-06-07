@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TemplatePackPropsFilePath Condition=" '$(TemplatePackPropsFilePath)'=='' ">$(MSBuildThisFileFullPath).props</TemplatePackPropsFilePath>
+  </PropertyGroup>
+
+  <Import Project="$(TemplatePackPropsFilePath)"
+          Condition=" '$(TemplatePackPropsFilePath)' != '' and Exists('$(TemplatePackPropsFilePath)') " />
+
+  <PropertyGroup Label="TemplatePackInfo">
+    <Id>NUnit3.DotNetNew.Template</Id>
+    <Authors>Aleksei Kharlov aka halex2005 (codeofclimber.ru)</Authors>
+    <Description>NUnit 3 Test Projects and Items template pack</Description>
+    <Copyright>Copyright © Aleksei Kharlov aka halex2005</Copyright>
+    <IconUrl>https://avatars2.githubusercontent.com/u/2678858</IconUrl>
+    <ProjectUrl>https://github.com/nunit/dotnet-new-nunit</ProjectUrl>
+    <LicenseUrl>https://github.com/nunit/dotnet-new-nunit/blob/master/LICENSE</LicenseUrl>
+    <Version>1.5.0</Version>
+    <Tags>NUnit dotnet core</Tags>
+    <RequiresLicenseAcceptance>false</RequiresLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup Label="PackageConfiguration">
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <PackageType>Template</PackageType>
+    <TemplateSourceRoot>$(MSBuildThisFileDirectory)</TemplateSourceRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ExcludeFromPackage Include="$(TemplateSourceRoot)**/bin/**/*" />
+    <ExcludeFromPackage Include="$(TemplateSourceRoot)**/obj/**/*" />
+    <ExcludeFromPackage Include="$(TemplateSourceRoot)**/*.user" />
+    <ExcludeFromPackage Include="$(TemplateSourceRoot)**/*.suo" />
+    <ExcludeFromPackage Include="$(TemplateSourceRoot)**/.vs/**/*" />
+    <ExcludeFromPackage Include="$(TemplateSourceRoot)**/.git/**/*" />
+    <ExcludeFromPackage Include="$(TemplateSourceRoot)**/packages/**/*" />
+
+    <TemplateFiles  Include="$(TemplateSourceRoot)/**/*"
+                    Exclude="@(ExcludeFromPackage)" />
+  </ItemGroup>
+
+  <PropertyGroup Label="BuildConfiguration">
+    <NoBuild>True</NoBuild>
+    <IncludeBuildOutput>False</IncludeBuildOutput>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
+    <PackProjectInputFile>$(MSBuildProjectFullPath)</PackProjectInputFile>
+    <PackageOutputPath>bin/$(Configuration)/templates/</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content  Include="@(TemplateFiles)"
+              Exclude="@(ExcludeFromPackage)"
+              PackagePath="Content/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <Target Name="GetNuGetPath" Outputs="@(NuGetPackOutput)">
+    <Message Text="NuGetPackOutput: [@(NuGetPackOutput)]" Importance="high"/>
+  </Target>
+  <Target Name="DebugInfo" BeforeTargets="Build;Pack">
+    <Message Text="Inner:TemplateSourceRoot: [$(TemplateSourceRoot)]" Importance="high"/>
+  </Target>
+  <!-- created with SideWaffle -->
+</Project>
