@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Microsoft.Internal.VisualStudio.PlatformUI;
+using Microsoft.VisualStudio.TemplateWizard;
 using NUnitTemplatesVsix.Annotations;
 
 namespace NUnitTemplatesVsix
@@ -26,6 +29,8 @@ namespace NUnitTemplatesVsix
             new KeyValuePair<string, string>("netcoreapp2.1", ".NET Core 2.1"),
         };
 
+        public bool UserCanceledTemplateCreation { get; set; }
+
         private string framework = "netcoreapp2.1";
         public string Framework
         {
@@ -38,7 +43,6 @@ namespace NUnitTemplatesVsix
         }
 
         private bool enablePack = false;
-
         public bool EnablePack
         {
             get => enablePack;
@@ -87,6 +91,31 @@ namespace NUnitTemplatesVsix
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private ICommand doCreateTemplateCommand;
+        public ICommand CreateTemplate
+        {
+            get
+            {
+                return doCreateTemplateCommand
+                    ?? (doCreateTemplateCommand = new RelayCommand(param => DoCreateTemplate(), param => true));
+            }
+        }
+
+        private void DoCreateTemplate()
+        {
+            UserCanceledTemplateCreation = false;
+        }
+
+        private ICommand doCancel;
+        public ICommand Cancel
+        {
+            get
+            {
+                return doCancel
+                    ?? (doCancel = new RelayCommand(param => UserCanceledTemplateCreation = true, param => true));
+            }
         }
     }
 }

@@ -8,19 +8,11 @@ using Microsoft.VisualStudio.TemplateWizard;
 
 namespace NUnitTemplatesVsix
 {
-    static class StringExtensions
-    {
-        public static string NullIfEmpty(this string source)
-        {
-            return string.IsNullOrEmpty(source)
-                ? null
-                : source;
-        }
-    }
     class NUnitProjectWizard : IWizard
     {
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
+            //TODO: redefine root namespace from automationObject!
             //$destinationdirectory$
             //$solutiondirectory$
             //$projectname$
@@ -33,11 +25,13 @@ namespace NUnitTemplatesVsix
                 DestinationDirectory = replacementsDictionary["$destinationdirectory$"]
             };
             var dialog = new TemplateOptionsDialog(templateOptions);
-            if (dialog.ShowModal() == true)
+            dialog.ShowModal();
+            if (templateOptions.UserCanceledTemplateCreation)
             {
-                //TODO: create project with filled options
-                //replacementsDictionary.Add("$platformversion$", dialog.TemplateOptions.Framework);
+                throw new WizardCancelledException("user cancelled template creation");
             }
+            //TODO: create project with filled options
+            //replacementsDictionary.Add("$platformversion$", dialog.TemplateOptions.Framework);
         }
 
         public void ProjectFinishedGenerating(Project project)
